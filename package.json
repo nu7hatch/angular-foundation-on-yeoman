@@ -23,7 +23,8 @@
     "grunt-open": "~0.1.0",
     "matchdep": "~0.1.1",
     "grunt-google-cdn": "~0.1.0",
-    "grunt-ngmin": "~0.0.1"
+    "grunt-ngmin": "~0.0.1",
+    "connect-modrewrite": "~0.1.5"
   },
   "engines": {
     "node": ">=0.8.0"

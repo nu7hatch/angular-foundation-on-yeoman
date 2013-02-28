@@ -1,5 +1,6 @@
 'use strict';
 var lrSnippet = require('grunt-contrib-livereload/lib/utils').livereloadSnippet;
+var modRewrite = require('connect-modrewrite');
 var mountFolder = function (connect, dir) {
     return connect.static(require('path').resolve(dir));
 };
@@ -51,6 +52,9 @@ module.exports = function (grunt) {
                     hostname: 'localhost',
                     middleware: function (connect) {
                         return [
+                            modRewrite([
+                                '^/hello$ /index.html'
+                            ]),
                             lrSnippet,
                             mountFolder(connect, '.tmp'),
                             mountFolder(connect, yeomanConfig.app)
