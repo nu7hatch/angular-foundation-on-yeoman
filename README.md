@@ -68,7 +68,7 @@ like this `pl.json` for example:
         "Are you {{age}} years old?": {
             "one": "Masz roczek?",
             "few": "Masz {{age}} lata?",
-            "many": "Masz {{age}} lat?",
+            "many": "Masz {{age}} lat?"
         }
     }
 
