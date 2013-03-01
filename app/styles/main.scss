@@ -1,5 +1,5 @@
-@import "./normalize.css";
-@import "./foundation.css";
+@import "foundation/scss/normalize";
+@import "foundation/scss/foundation";
 @import "./font-awesome.css";
 
 .sup {
@@ -37,6 +37,11 @@
     }
     li:last-child:before {
       content: " and ";
+    }
+    li:last-child:after {
+      content: ".";
+      display: inline;
+      font-weight: normal;
     }
   }
 }
