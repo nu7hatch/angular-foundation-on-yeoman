@@ -8,8 +8,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
     // Your application routes goes here.
     $routeProvider
         .when('/', {
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl',
+            templates: { main: 'views/main.html' },
             title: 'Hello Stranger!'
         })
         .otherwise({

@@ -3,7 +3,6 @@
 @import "./font-awesome.css";
 
 .sup {
-  margin-top: 5em;
   text-align: center;
   text-shadow: 1px 1px 0 #FFF;
   
@@ -44,4 +43,13 @@
       font-weight: normal;
     }
   }
+}
+
+[role='main'] {
+    margin-top: 5em;
+}
+
+[role='contentinfo'] {
+  text-align: center;
+  margin-top: 2em;
 }

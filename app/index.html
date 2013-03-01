@@ -19,12 +19,14 @@
       <script src="components/json3/lib/json3.min.js"></script>
     <![endif]-->
     
-    <!-- Add your site or application content here -->
-    <div class="container" ng-show="i18nReady == true" ng-view ng-cloak></div>
-
-    <!-- Loader visible only when page is loading -->
-    <div class="loader" ng-show="i18nReady != true" ng-cloak>
-      Loading...
+    <div ng-controller="AppCtrl">
+      <!-- Add your site or application content here -->
+      <div ng-include src="layout" scope=""></div>
+          
+      <!-- Loader visible only when page is loading -->
+      <div class="loader" ng-show="i18nReady != true" ng-cloak>
+        Loading...
+      </div>
     </div>
     
     <!-- build:js scripts/scripts.js -->
@@ -53,6 +55,8 @@
     <script src="scripts/app.js"></script>
     <script src="scripts/routes.js"></script>
     <script src="scripts/extensions/i18n.js"></script>
+    <script src="scripts/controllers/app.js"></script>
+    <script src="scripts/controllers/layout.js"></script>
     <script src="scripts/controllers/main.js"></script>
     <script src="scripts/run.js"></script>
     <!-- endbuild -->
