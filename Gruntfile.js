@@ -94,7 +94,7 @@ module.exports = function (grunt) {
         },
         testacular: {
             unit: {
-                configFile: 'testacular.conf.js',
+                configFile: 'config/testacular.conf.js',
                 singleRun: true
             }
         },
@@ -119,7 +119,7 @@ module.exports = function (grunt) {
                 cssDir: '.tmp/styles',
                 imagesDir: '<%= yeoman.app %>/images',
                 javascriptsDir: '<%= yeoman.app %>/scripts',
-                fontsDir: '<%= yeoman.app %>/styles/fonts',
+                fontsDir: '<%= yeoman.app %>/fonts',
                 importPath: '<%= yeoman.app %>/components',
                 relativeAssets: true
             },
