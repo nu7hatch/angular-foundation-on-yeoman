@@ -65,16 +65,16 @@ like this `pl.json` for example:
 
     {
         "How are you, {{name}}?": "Jak się masz, {{name}}?"
-        "Are you {{age}} years old?": {
+        "Are you {} years old?": {
             "one": "Masz roczek?",
-            "few": "Masz {{age}} lata?",
-            "many": "Masz {{age}} lat?"
+            "few": "Masz {} lata?",
+            "many": "Masz {} lat?"
         }
     }
 
 Then you can easily use your translations in the views:
 
     <h1 t="How are you, {{name}}?">How are you, John?</h1>
-    <p t="Are you {{age}} years old?" t-plural="age"></p>
+    <p t="Are you {} years old?" t-plural="age"></p>
     
 Neat, isn't it?
