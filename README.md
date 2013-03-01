@@ -50,3 +50,31 @@ are generally default ones provided by Yeoman!
 
 Your editor or IDE should follow indentation rules described in `.editorconfig`
 dotfile. 
+
+## Cool stuff
+
+There's couple of cool extensions powering up this application. Here's
+the short description of each of them:
+
+### I18n service
+
+AngularJS' internationalization sucks, like a lot. Generally I think that 
+everything else but Gettext sucks, so here I added a sorta gettext-like I18n
+module. You can define your translations in `app/locales/{locale-id}.json` file,
+like this `pl.json` for example:
+
+    {
+        "How are you, {{name}}?": "Jak się masz, {{name}}?"
+        "Are you {{age}} years old?": {
+            "one": "Masz roczek?",
+            "few": "Masz {{age}} lata?",
+            "many": "Masz {{age}} lat?",
+        }
+    }
+
+Then you can easily use your translations in the views:
+
+    <h1 t="How are you, {{name}}?">How are you, John?</h1>
+    <p t="Are you {{age}} years old?" t-plural="age"></p>
+    
+Neat, isn't it?
