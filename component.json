@@ -1,6 +1,6 @@
 {
   "name": "awesomenez-home",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "dependencies": {
     "angular": "~1.0.5",
     "json3": "~3.2.4",
@@ -8,7 +8,9 @@
     "angular-resource": "~1.0.5",
     "angular-cookies": "~1.0.5",
     "angular-sanitize": "~1.0.5",
-    "underscore": "~1.4.0"
+    "underscore": "~1.4.0", 
+    "jquery": "~1.9.0",
+    "foundation": "~4.0.0"
   },
   "devDependencies": {
     "angular-mocks": "~1.0.5",
