@@ -8,4 +8,9 @@ app.controller('MainCtrl', function ($scope) {
     ];
 
     $scope.userName = "bro";
+
+    $scope.addThing = function() {
+        $scope.awesomeThings.push($scope.thingName);
+        $scope.thingName = '';
+    };
 });

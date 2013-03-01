@@ -1,5 +1,10 @@
 {
-  "Sup {{userName}}!": "How are you {{userName}}?",
-  "Installed modules": "Yeah, pretty neat stuff installed here",
-  "Enjoy it!": "Have fun!"
+    "Sup {{userName}}!": "How are you {{userName}}?",
+    "Installed modules": "Yeah, pretty neat stuff installed here",
+    "Enjoy it!": "Have fun!",
+    "There's {} things installed.": {
+        "0": "Nothing installed,",
+        "1": "There's one thing installed.",
+        "other": "There's {} things installed."
+    }
 }

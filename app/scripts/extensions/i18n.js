@@ -29,6 +29,25 @@ function I18n($locale, $log, $http, $interpolate, $rootScope) {
     $rootScope.i18n = {
         getTranslation: function(key) {
             return dict[key];
+        },
+        getTranslationN: function(key, count) {
+            var whens = dict[key];
+            if (whens == undefined || !!whens) return key;
+            return whens[count] || whens[$locale.pluralCat(count)] || key;
+        },
+        translate: function(key, scope) {
+            var translation = getTranslation(key) || key;
+            return $interpolate(translation, scope);
+        },
+        t: function(key, scope) {
+            return this.translate(key, scope);
+        },
+        translateN: function(key, count, scope) {
+            var translation = getTranslationN(key, count) || key;
+            return $interpolate(translation, scope);
+        },
+        tn: function(key, count, scope) {
+            return this.pluralTranslate(key, scope);
         }
     };
 }
@@ -38,18 +57,27 @@ function I18n($locale, $log, $http, $interpolate, $rootScope) {
 app.factory('i18n', ['$locale', '$log', '$http', '$interpolate', '$rootScope', I18n]);
 
 function translateDirective($rootScope, $interpolate) {
+    var BRACE = /{}/g;
     return {
         restrict: 'A',
-        compile: function(element, attr) {
-            var template = element.attr(attr.$attr.t);
-            element.data('$template', template);
-            return this.link;
-        },
         link: function(scope, element, attr) {
-            var template = element.data('$template');
+            var template = element.attr(attr.$attr.t)
+              , countExp = attr.tPlural
+              , isPlural = !!countExp;
 
             var callback = function(value) {
-                var translation = $rootScope.i18n.getTranslation(template);
+                var translation;
+
+                if (isPlural) {
+                    var count = parseFloat(scope.$eval(countExp))
+                      , startSymbol = $interpolate.startSymbol()
+                      , endSymbol = $interpolate.endSymbol();
+                    
+                    var t = $rootScope.i18n.getTranslationN(template, count);
+                    translation = t.replace(BRACE, startSymbol + countExp + endSymbol);
+                } else {
+                    translation = $rootScope.i18n.getTranslation(template);
+                }
 
                 if (!!translation) {
                     var interpolateFn = $interpolate(translation);
@@ -60,6 +88,10 @@ function translateDirective($rootScope, $interpolate) {
 
             scope.$on('languageDataLoaded', callback);
             attr.$observe('t', callback);
+
+            if (isPlural) {
+                scope.$watch(countExp, callback);
+            }
         }
     };
 };
