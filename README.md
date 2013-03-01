@@ -33,15 +33,15 @@ to add them to `component.json` file.
 If you want to use new javascript library in your application, simply load it
 via `script` HTML tag in `build:js` section of `app/index.html` file.
 
-### Bower tasks
+### Grunt tasks
 
-Use bower to perform all the tasks. For example to run tests call:
+Use grunt to perform all the tasks. For example to run tests call:
 
-    $ bower test
+    $ grunt test
 
 If you want to run server, simply call:
 
-    $ bower server
+    $ grunt server
 
 Etc. etc... All the available commands are listed in `Gruntfile.js` and 
 are generally default ones provided by Yeoman!
