@@ -15,8 +15,16 @@ libraries from `compontent.json` (via `bower`).
 
 ## Development
 
+It's pretty simple and straightforward. Everything about your application will
+go to `app` directory and your tests to `test`. Compiled website will be
+saved in gitignored `dist` directory.
+
+### Adding dependencies 
+
 To install new development dependencies use `npm`. Don't forget to add them to
 `package.json` file.
+
+### Installing javascript components
 
 To install new javascript libraries use `bower`. Javascript components will be
 installed to `app/components/[component-name]` directory. Also, don't forget
@@ -25,7 +33,7 @@ to add them to `component.json` file.
 If you want to use new javascript library in your application, simply load it
 via `script` HTML tag in `build:js` section of `app/index.html` file.
 
-## Tasks
+### Bower tasks
 
 Use bower to perform all the tasks. For example to run tests call:
 
@@ -37,3 +45,8 @@ If you want to run server, simply call:
 
 Etc. etc... All the available commands are listed in `Gruntfile.js` and 
 are generally default ones provided by Yeoman!
+
+### Editor configuration
+
+Your editor or IDE should follow indentation rules described in `.editorconfig`
+dotfile. 
