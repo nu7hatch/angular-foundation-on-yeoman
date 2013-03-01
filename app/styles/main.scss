@@ -1,2 +1,42 @@
 @import "./normalize.css";
 @import "./foundation.css";
+@import "./font-awesome.css";
+
+.sup {
+  margin-top: 5em;
+  text-align: center;
+  text-shadow: 1px 1px 0 #FFF;
+  
+  > .in {
+    background: #EEFAFF;
+    border-radius: 3px;
+    padding: 2em 1em;
+  }
+  
+  h1 {
+    margin-top: 0;
+  }
+  
+  ul {
+    list-style-type: none;
+    display: inline !important;
+    margin: 0;
+    padding: 0;
+
+    li {
+      display: inline;
+      font-weight: bold;
+    }
+    li:before {
+      content: ", ";
+      display: inline;
+      font-weight: normal;
+    }
+    li:first-child:before {
+      display: none;
+    }
+    li:last-child:before {
+      content: " and ";
+    }
+  }
+}
