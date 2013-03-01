@@ -78,3 +78,33 @@ Then you can easily use your translations in the views:
     <p t="Are you {} years old?" t-plural="age"></p>
     
 Neat, isn't it?
+
+### Multiple layouts.
+
+Multiple layouts and partials has been resolved simply by using `ng-include`.
+Shortly, don't use `ng-view` in your app, neither set `templateUrl` in your
+routes. If you wanna define a route do it this way:
+    
+    $routeProvider.when('/hello', {
+        templates: { main: 'views/hello.html', 'sideNav': 'views/hello_nav.html },
+        layout: 'views/layouts/homepage.html }
+    }
+    
+So as you can see, you can set many views. You can also set layout for the
+particular page. If you will specify the layout then `views/layouts/default.html`
+will be used.
+
+In your views you include templates this way:
+
+    <div ng-include="templates.main"></div>
+    <div ng-include="templates.sideNav"></div>
+
+One more thing worth to know about layouts - all should be handled by `LayoutCtrl`:
+
+    <div ng-controller="LayoutCtrl">
+      <h1>Hello World!</h1>
+      <div ng-include="templates.main"></div>
+    </div>
+
+Controller to handle final partials should be set the same way, inline in those
+partials.
