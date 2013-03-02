@@ -81,7 +81,7 @@ like this `pl.json` for example:
 Then you can easily use your translations in the views:
 
     <h1 t="How are you, {{name}}?">How are you, John?</h1>
-    <p t="Are you {} years old?" t-plural="age"></p>
+    <p t="Are you {} years old?" count="age"></p>
     
 Neat, isn't it?
 
