@@ -96,14 +96,14 @@ will be used.
 
 In your views you include templates this way:
 
-    <div ng-include="templates.main"></div>
-    <div ng-include="templates.sideNav"></div>
+    <div ng-include src="templates.main"></div>
+    <div ng-include src="templates.sideNav"></div>
 
 One more thing worth to know about layouts - all should be handled by `LayoutCtrl`:
 
     <div ng-controller="LayoutCtrl">
       <h1>Hello World!</h1>
-      <div ng-include="templates.main"></div>
+      <div ng-include src="templates.main"></div>
     </div>
 
 Controller to handle final partials should be set the same way, inline in those
