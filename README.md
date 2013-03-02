@@ -1,7 +1,8 @@
 # AngularJS + Zurb Foundation + Yeoman = ♥
 
-This is a scaffold for the AngularJS application powered by Zurb Foundation CSS3 
-framework. Everything's wrapped up with Yeoman's magic.
+This is a scaffold for the [AngularJS](http://angularjs.org/) application powered 
+by [Zurb Foundation](http://foundation.zurb.com/) CSS3 framework. Everything's 
+wrapped up with [Yeoman's](http://yeoman.io/) magic.
 
 ## Getting started
 
@@ -55,6 +56,11 @@ dotfile.
 
 There's couple of cool extensions powering up this application. Here's
 the short description of each of them:
+
+### Font Awesome
+
+App has [Font Awesome](http://fortawesome.github.com/Font-Awesome/) installed by
+default, so you can enjoy beautiful, scalable icons in your application.
 
 ### I18n service
 
