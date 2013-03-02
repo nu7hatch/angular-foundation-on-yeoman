@@ -46,10 +46,17 @@
 }
 
 [role='main'] {
-  margin-top: 5em;
+  margin-top: 1em;
 }
 
 [role='contentinfo'] {
   text-align: center;
   margin-top: 2em;
+  padding-bottom: 2em;
+}
+
+@media screen and (min-width: 1000px) {
+  [role='main'] {
+    margin-top: 4em;
+  }
 }
