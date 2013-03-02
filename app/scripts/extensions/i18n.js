@@ -158,10 +158,10 @@ app.service('i18n', function($locale, $interpolate, $rootScope, Dictionary) {
  * Pluralization works very similar to `ngPluralize` directive from Angular.
  * The only difference is that you don't have to specify all the whens in
  * your view. You give only one key translation in `t` attribute and specify
- * number which is going to pluralize this message in `t-plural` attribute.
+ * number which is going to pluralize this message in `count` attribute.
  *
  * <pre>
- * <h2 t="You have {} installed components" t-plural="components.length">
+ * <h2 t="You have {} installed components" count="components.length">
  *   You have 3 installed components
  * </h2>
  * </pre>
@@ -170,7 +170,7 @@ app.service('i18n', function($locale, $interpolate, $rootScope, Dictionary) {
  * counter in the place of `{}` brackets.
  *
  * @param {string} t The text to be translated (a translation key).
- * @param {string|expression} plural The variable to be bounded to when pluralize.
+ * @param {string|expression} count The variable to be bounded to when pluralize.
  */
 app.directive('t', function($rootScope, $interpolate, i18n) {
     var BRACE = /{}/g;
@@ -179,7 +179,7 @@ app.directive('t', function($rootScope, $interpolate, i18n) {
         
         link: function(scope, element, attr) {
             var template = element.attr(attr.$attr.t)
-              , countExp = attr.tPlural
+              , countExp = attr.count
               , isPlural = !!countExp;
 
             var callback = function(value) {
