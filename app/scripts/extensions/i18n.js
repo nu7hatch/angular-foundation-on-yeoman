@@ -1,12 +1,14 @@
 'use strict';
 
-function I18n($locale, $log, $http, $interpolate, $rootScope) {
+// Define I18n factory which is going to load current locale data
+// from served resources.
+app.factory('i18n', function I18n($locale, $log, $http, $interpolate, $rootScope) {
     var dict = {}
       , currentLocale = $locale.id
       , defaultLocale = 'en';
     
     (function loadDict(locale, ignoreError) {
-        var url =  './locales/' + locale + '.json';
+        var url =  '/locales/' + locale + '.json';
         
         $http({method: 'GET', url: url, cache: true})
             .error(function() {
@@ -20,7 +22,7 @@ function I18n($locale, $log, $http, $interpolate, $rootScope) {
             .success(function(data) {
                 dict = data;
                 
-                $log.info("Language data loaded for: " + locale);
+                $log.info('Language data loaded for "' + locale + '"');
                 $rootScope.i18nReady = true;
                 $rootScope.$broadcast('languageDataLoaded');
             });
@@ -50,13 +52,10 @@ function I18n($locale, $log, $http, $interpolate, $rootScope) {
             return this.pluralTranslate(key, scope);
         }
     };
-}
+}).$inject = ['$locale', '$log', '$http', '$interpolate', '$rootScope'];
 
-// Define I18n factory which is going to load current locale data
-// from served resources.
-app.factory('i18n', ['$locale', '$log', '$http', '$interpolate', '$rootScope', I18n]);
-
-function translateDirective($rootScope, $interpolate) {
+// Define a translation directive.
+app.directive('t', function($rootScope, $interpolate) {
     var BRACE = /{}/g;
     return {
         restrict: 'A',
@@ -94,7 +93,4 @@ function translateDirective($rootScope, $interpolate) {
             }
         }
     };
-};
-
-// Define a translation directive.
-app.directive('t', ['$rootScope', '$interpolate', translateDirective]);
+}).$inject = ['$rootScope', '$interpolate'];

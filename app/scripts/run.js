@@ -1,6 +1,6 @@
 'use strict';
 
-app.run(['$rootScope', '$log', 'i18n', function($rootScope, $log, i18n) {
+app.run(function($rootScope, $log) {
     // Configure callbacks for routing changes.
     $rootScope.$on('$routeChangeSuccess', function(ev, current) {
         $rootScope.windowTitle = current.$route.title;
@@ -8,4 +8,4 @@ app.run(['$rootScope', '$log', 'i18n', function($rootScope, $log, i18n) {
     });
     
     // Other application initializers goes here...
-}]);
+}).$inject = ['$rootScope', '$log'];

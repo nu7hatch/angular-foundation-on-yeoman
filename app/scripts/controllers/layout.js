@@ -1,5 +1,5 @@
 'use strict';
 
-app.controller('LayoutCtrl', ['$scope', function($scope) {
+app.controller('LayoutCtrl', function($scope) {
     // Layout specific stuff goes here...
-}]);
+});

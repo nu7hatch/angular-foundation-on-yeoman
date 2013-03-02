@@ -1,7 +1,7 @@
 'use strict';
 
 // Routing configuration.
-app.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
+app.config(function($routeProvider, $locationProvider) {
     // Enable pushState in routes.
     $locationProvider.html5Mode(true).hashPrefix('');
 
@@ -14,4 +14,4 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
         .otherwise({
             redirectTo: '/'
         });
-}]);
+}).$inject = ['$routeProvider', '$locationProvider'];

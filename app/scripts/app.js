@@ -1,4 +1,4 @@
 'use strict';
 
 // Declare app level module.
-var app = angular.module('app', ['ngResource']);
+var app = angular.module('app', []);
