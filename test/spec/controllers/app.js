@@ -3,13 +3,18 @@
 describe('Controller: AppCtrl', function() {
     beforeEach(module('app'));
 
-    var AppCtrl, scope;
+    var AppCtrl, scope, i18n;
 
     beforeEach(inject(function($controller, $rootScope, $route) {
+        i18n = {init: jasmine.createSpy()};
         scope = $rootScope.$new();
-        AppCtrl = $controller('AppCtrl', {$scope: scope, i18n: undefined});
+        AppCtrl = $controller('AppCtrl', {'$scope': scope, 'i18n': i18n});
     }));
 
+    it('should initialize i18n module', function() {
+        expect(i18n.init).toHaveBeenCalled();
+    });
+    
     it('should set current templates', function() {
         var mockRouteData = {templates: {main: 'main.html', side: 'side.html'}}
           , nextRoute = {'$route': mockRouteData};

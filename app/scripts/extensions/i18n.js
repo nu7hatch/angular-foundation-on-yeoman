@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc factory
- * @name ng.factory:Directive
+ * @name ng.factory:LocaleDictionary
  *
  * @description
  * This is an entity for I18n dictionaries. This factory shouldn't be
  * accessed directly - it is ment to be used internally by the `i18n`
  * translation service.
  */
-app.factory('Dictionary', function($http, $locale, $log) {
+app.factory('LocaleDictionary', function($http, $locale, $log) {
     return {
         get: function(localeId, fallback, callback) {
             var dictUrl = '/locales/' + localeId + '.json'
@@ -74,10 +74,11 @@ app.factory('Dictionary', function($http, $locale, $log) {
  *
  * Both functions take a scope as last argument. 
  */
-app.service('i18n', function($locale, $interpolate, $rootScope, Dictionary) {
+app.service('i18n', function($locale, $interpolate, $rootScope, LocaleDictionary) {
     var DEFAULT_LOCALE = 'en';
     
     return {
+        BRACE: /{}/g,
         dict: {},
         currentLocale: $locale.id,
 
@@ -98,43 +99,42 @@ app.service('i18n', function($locale, $interpolate, $rootScope, Dictionary) {
             var self =  this;
             $rootScope.i18nReady = false;
 
-            Dictionary.get(this.currentLocale, DEFAULT_LOCALE, function(dict) {
+            LocaleDictionary.get(this.currentLocale, DEFAULT_LOCALE, function(dict) {
                 self.dict = dict;
                 
                 $rootScope.i18nReady = true;
                 $rootScope.$broadcast('localeDictionaryLoaded');
             });
-
-            return this.dict;
         },
         getTranslation: function(key) {
-            return this.dict[key];
+            return this.dict[key] || key;
         },
         getTranslationN: function(key, count) {
             var whens = this.dict[key];
-
-            if (whens == undefined || !!whens) {
+            
+            if (whens == undefined || !whens) {
                 return key;
             }
-            
+
             return whens[count] || whens[$locale.pluralCat(count)] || key;
         },
         translate: function(key, scope) {
             var translation = this.getTranslation(key) || key;
-            return $interpolate(translation, scope);
+            return $interpolate(translation)(scope);
         },
         t: function(key, scope) {
             return this.translate(key, scope);
         },
         translateN: function(key, count, scope) {
-            var translation = this.getTranslationN(key, count) || key;
-            return $interpolate(translation, scope);
+            var translation = this.getTranslationN(key, count);
+            translation = translation.replace(this.BRACE, count);
+            return $interpolate(translation)(scope);
         },
         tn: function(key, count, scope) {
-            return this.translateN(key, scope);
+            return this.translateN(key, count, scope);
         }
     };
-}).$inject = ['$locale', '$interpolate', '$rootScope', 'Dictionary'];
+}).$inject = ['$locale', '$interpolate', '$rootScope', 'LocaleDictionary'];
 
 /**
  * @ngdoc directive
@@ -172,8 +172,7 @@ app.service('i18n', function($locale, $interpolate, $rootScope, Dictionary) {
  * @param {string} t The text to be translated (a translation key).
  * @param {string|expression} count The variable to be bounded to when pluralize.
  */
-app.directive('t', function($rootScope, $interpolate, i18n) {
-    var BRACE = /{}/g;
+app.directive('t', function($rootScope, $interpolate, i18n) {    
     return {
         restrict: 'A',
         
@@ -191,7 +190,7 @@ app.directive('t', function($rootScope, $interpolate, i18n) {
                       , endSymbol = $interpolate.endSymbol();
                     
                     var t = i18n.getTranslationN(template, count);
-                    translation = t.replace(BRACE, startSymbol + countExp + endSymbol);
+                    translation = t.replace(i18n.BRACE, startSymbol + countExp + endSymbol);
                 } else {
                     translation = i18n.getTranslation(template);
                 }
