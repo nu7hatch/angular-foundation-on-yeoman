@@ -64,7 +64,7 @@ module.exports = function (grunt) {
             },
             test: {
                 options: {
-                    port: 9001,
+                    port: 9000,
                     middleware: function (connect) {
                         return [
                             mountFolder(connect, '.tmp'),
@@ -189,7 +189,7 @@ module.exports = function (grunt) {
                 files: [{
                     expand: true,
                     cwd: '<%= yeoman.app %>',
-                    src: ['*.html', 'views/*.html'],
+                    src: ['*.html', 'views/**/*.html'],
                     dest: '<%= yeoman.dist %>'
                 }]
             }
@@ -228,7 +228,10 @@ module.exports = function (grunt) {
                     src: [
                         '*.{ico,txt}',
                         '.htaccess',
-                        'components/**/*'
+                        'components/**/*',
+                        'images/**/*',
+                        'fonts/**/*',
+                        'locales/**/*'
                     ]
                 }]
             }
@@ -264,7 +267,7 @@ module.exports = function (grunt) {
         'coffee',
         'compass:dist',
         'useminPrepare',
-        'imagemin',
+        //'imagemin',
         'cssmin',
         'htmlmin',
         'concat',

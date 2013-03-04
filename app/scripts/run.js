@@ -1,11 +1,13 @@
 'use strict';
 
-app.run(function($rootScope, $log) {
-    // Configure callbacks for routing changes.
-    $rootScope.$on('$routeChangeSuccess', function(ev, current) {
-        $rootScope.windowTitle = current.$route.title;
-        $log.info('Page title set to "' + $rootScope.windowTitle + '"');
-    });
+angular.module('app').run([
+    '$rootScope', '$window', '$log', 'i18n', function ($rootScope, $window, $log, i18n) {
+        // Configure callbacks for routing changes.
+        $rootScope.$on('$routeChangeSuccess', function(ev, current) {
+            $rootScope.windowTitle = current.$route.title;
+            $log.info('Page title set to "' + $rootScope.windowTitle + '"');
+        });
     
-    // Other application initializers goes here...
-}).$inject = ['$rootScope', '$log'];
+        // Other application initializers goes here...
+    }
+]);

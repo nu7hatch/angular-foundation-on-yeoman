@@ -1,21 +1,21 @@
 'use strict';
 
-describe('Controller: AppCtrl', function() {
+describe('Controller: AppCtrl', function () {
     beforeEach(module('app'));
 
     var AppCtrl, scope, i18n;
 
-    beforeEach(inject(function($controller, $rootScope, $route) {
+    beforeEach(inject(function ($controller, $rootScope, $route) {
         i18n = {init: jasmine.createSpy()};
         scope = $rootScope.$new();
         AppCtrl = $controller('AppCtrl', {'$scope': scope, 'i18n': i18n});
     }));
 
-    it('should initialize i18n module', function() {
+    it('should initialize i18n module', function () {
         expect(i18n.init).toHaveBeenCalled();
     });
     
-    it('should set current templates', function() {
+    it('should set current templates', function () {
         var mockRouteData = {templates: {main: 'main.html', side: 'side.html'}}
           , nextRoute = {'$route': mockRouteData};
 
@@ -24,7 +24,7 @@ describe('Controller: AppCtrl', function() {
         expect(scope.templates.side).toBe('side.html');
     });
 
-    it('should set current layout', function() {
+    it('should set current layout', function () {
         var mockRouteData = {templates: {main: 'main.html'}, layout: 'layout.html'}
           , nextRoute = {'$route': mockRouteData};
 
@@ -32,7 +32,7 @@ describe('Controller: AppCtrl', function() {
         expect(scope.layout).toBe('layout.html');
     });
 
-    it('should set default layout if route doesn\'t specify one', function() {
+    it('should set default layout if route doesn\'t specify one', function () {
         var mockRouteData = {templates: {main: 'main.html'}}
           , nextRoute = {'$route': mockRouteData};
 

@@ -21,10 +21,10 @@
     
     <div ng-controller="AppCtrl">
       <!-- Add your site or application content here -->
-      <div ng-include src="layout" scope=""></div>
+      <div ng-include src="layout" scope="" ng-show="i18nReady" ng-cloak></div>
           
       <!-- Loader visible only when page is loading -->
-      <div class="loader" ng-show="i18nReady != true" ng-cloak>
+      <div class="loader" ng-show="!i18nReady" ng-cloak>
         Loading...
       </div>
     </div>

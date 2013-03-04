@@ -1,6 +1,11 @@
-@import "foundation/scss/normalize";
-@import "foundation/scss/foundation";
-@import "./font-awesome.css";
+// Zurb Foundation
+@import "./foundation-config.scss";
+@import "foundation/scss/normalize.scss";
+@import "foundation/scss/foundation.scss";
+
+// Font Awesome
+$fontAwesomePath: "../fonts";
+@import "./font-awesome.scss";
 
 .sup {
   text-align: center;

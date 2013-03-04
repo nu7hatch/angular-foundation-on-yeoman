@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('MainCtrl', function($scope) {
+angular.module('app').controller('MainCtrl', ['$scope', function($scope) {
     $scope.awesomeThings = [
         'Zurb Foundation',
         'AngularJS',
@@ -9,4 +9,4 @@ app.controller('MainCtrl', function($scope) {
     ];
 
     $scope.userName = "bro";
-});
+}]);
