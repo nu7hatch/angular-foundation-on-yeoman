@@ -6,9 +6,9 @@ wrapped up with [Yeoman's](http://yeoman.io/) magic.
 
 ## Getting started
 
-If you setting it up for the first time, use the following script:
+If you setting it up for the first time, run the following script:
 
-    $ ./setup.sh
+    $ [sudo] sh ./scripts/setup.sh
     
 It will check if you have all the required commands installed, and later will 
 install all the local dependencies from `package.json` (via `npm`) file and javascript
