@@ -76,7 +76,7 @@ module.exports = function (grunt) {
         },
         open: {
             server: {
-                url: 'http://localhost:<%= connect.livereload.options.port %>'
+                url: 'http://<%= connect.livereload.options.hostname %>:<%= connect.livereload.options.port %>'
             }
         },
         clean: {
