@@ -6,9 +6,9 @@ wrapped up with [Yeoman's](http://yeoman.io/) magic.
 
 ## Getting started
 
-If you setting it up for the first time, use the following script:
+If you setting it up for the first time, run the following script:
 
-    $ ./setup.sh
+    $ [sudo] sh ./scripts/setup.sh
     
 It will check if you have all the required commands installed, and later will 
 install all the local dependencies from `package.json` (via `npm`) file and javascript
@@ -92,9 +92,9 @@ Shortly, don't use `ng-view` in your app, neither set `templateUrl` in your
 routes. If you wanna define a route do it this way:
     
     $routeProvider.when('/hello', {
-        templates: { main: 'views/hello.html', 'sideNav': 'views/hello_nav.html },
-        layout: 'views/layouts/homepage.html }
-    }
+        templates: { main: 'views/hello.html', 'sideNav': 'views/hello_nav.html' },
+        layout: 'views/layouts/homepage.html' }
+    })
     
 So as you can see, you can set many views. You can also set layout for the
 particular page. If you will specify the layout then `views/layouts/default.html`

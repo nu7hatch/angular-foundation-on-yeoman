@@ -18,4 +18,4 @@ function assert_commands {
 }
 
 assert_commands node npm bower grunt yo testacular ruby compass
-npm install && bower install
+npm install && bower install -allow-root
