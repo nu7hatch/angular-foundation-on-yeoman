@@ -8,7 +8,7 @@ function AppCtrl($scope, $rootScope, $route, $log, i18n) {
     
     // Configure layout and templates.
     $rootScope.$on('$routeChangeStart', function (scope, next) {
-        var route = next.$route;
+        var route = next.$$route;
         
         $rootScope.templates = route.templates || {};
         $rootScope.layout = route.layout || DEFAULT_LAYOUT;
