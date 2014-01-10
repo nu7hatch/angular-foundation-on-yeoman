@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 
 function assert_command {
     cmd="$1"
