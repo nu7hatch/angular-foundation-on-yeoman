@@ -8,6 +8,7 @@ wrapped up with [Yeoman's](http://yeoman.io/) magic.
 
 If you setting it up for the first time, use the following script:
 
+    $ cd scripts
     $ ./setup.sh
     
 It will check if you have all the required commands installed, and later will 
